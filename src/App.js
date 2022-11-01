@@ -1,10 +1,6 @@
-// https://fakestoreapi.com/
+import Routing from "./Routing";
 function App() {
-  return (
-    <div>
-      <h1>Online shop</h1>
-    </div>
-  );
+  return <Routing />;
 }
 
 export default App;
