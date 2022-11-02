@@ -5,7 +5,7 @@ const Routing = () => {
   return (
     <BrowserRouter>
       <Nav />
-      <div className="max-w-screen-lg mx-auto">
+      <div className="max-w-screen-lg mx-auto px-6">
         <Routes>
           <Route path="/" element={<Home />} />
         </Routes>

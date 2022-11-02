@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Spinner from "../components/Spinner";
+import Product from "../components/Product";
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -16,7 +17,14 @@ const Home = () => {
         console.log(error);
       });
   }, []);
-  console.log(products);
-  return !loading ? products.length : <Spinner />;
+  return !loading ? (
+    <div className="flex flex-wrap -mx-4">
+      {products.map((product) => (
+        <Product product={product} key={product.id} />
+      ))}
+    </div>
+  ) : (
+    <Spinner />
+  );
 };
 export default Home;
