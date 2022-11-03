@@ -3,7 +3,10 @@ const Product = ({ product }) => {
   //   const { product } = props;
   return (
     <div className="w-full sm:w-6/12 md:w-4/12 lg:w-3/12 p-4">
-      <Link to="/product/2" className="border px-3 py-6 rounded block ">
+      <Link
+        to={`/product/${product.id}`}
+        className="border px-3 py-6 rounded block "
+      >
         <div className="w-full h-[300px] md:h-[220px] overflow-hidden">
           <img
             src={product.image}
