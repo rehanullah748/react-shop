@@ -1,10 +1,12 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import axios from "axios";
 import Spinner from "../components/Spinner";
 const Details = () => {
   const [product, setProduct] = useState({});
   const [loader, setLoader] = useState(true);
+  const [quantities, setQuantities] = useState(1);
   const { id } = useParams();
   useEffect(() => {
     axios
@@ -38,6 +40,31 @@ const Details = () => {
           <span className="capitalize font-medium">{product.category}</span>
         </div>
         <p className="mt-2">{product.description}</p>
+        <div className="my-3">
+          <label
+            htmlFor="quantities"
+            className="block mb-2 capitalize font-medium"
+          >
+            quantities
+          </label>
+          <div className="flex items-center">
+            <span className="bg-indigo-600 h-12 flex justify-center items-center text-white w-12 cursor-pointer">
+              <AiOutlineMinus />
+            </span>
+            <input
+              type="text"
+              name=""
+              id="quantities"
+              className="border outline-none w-full px-3 h-12"
+              placeholder="Quantities"
+              value={quantities}
+            />
+            <span className="bg-indigo-600 h-12 flex justify-center items-center text-white w-12 cursor-pointer">
+              <AiOutlinePlus />
+            </span>
+          </div>
+        </div>
+
         <button className="bg-indigo-600 text-white capitalize font-medium px-7 py-3 mt-4">
           add to cart
         </button>
