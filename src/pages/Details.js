@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import axios from "axios";
 import Spinner from "../components/Spinner";
-const Details = () => {
+const Details = ({ addProduct }) => {
   const [product, setProduct] = useState({});
   const [loader, setLoader] = useState(true);
   const [quantities, setQuantities] = useState(1);
@@ -20,7 +20,17 @@ const Details = () => {
         console.log(error);
       });
   }, []);
-  console.log(product);
+  const inc = () => {
+    setQuantities(quantities + 1);
+  };
+  const dec = () => {
+    if (quantities > 1) {
+      setQuantities(quantities - 1);
+    }
+  };
+  const addToCart = () => {
+    addProduct({ ...product, quantities });
+  };
   return !loader ? (
     <div className="my-10 flex flex-wrap -mx-5">
       <div className="w-full md:w-4/12 p-5">
@@ -48,7 +58,10 @@ const Details = () => {
             quantities
           </label>
           <div className="flex items-center">
-            <span className="bg-indigo-600 h-12 flex justify-center items-center text-white w-12 cursor-pointer">
+            <span
+              className="bg-indigo-600 h-12 flex justify-center items-center text-white w-12 cursor-pointer"
+              onClick={dec}
+            >
               <AiOutlineMinus />
             </span>
             <input
@@ -59,13 +72,19 @@ const Details = () => {
               placeholder="Quantities"
               value={quantities}
             />
-            <span className="bg-indigo-600 h-12 flex justify-center items-center text-white w-12 cursor-pointer">
+            <span
+              className="bg-indigo-600 h-12 flex justify-center items-center text-white w-12 cursor-pointer"
+              onClick={inc}
+            >
               <AiOutlinePlus />
             </span>
           </div>
         </div>
 
-        <button className="bg-indigo-600 text-white capitalize font-medium px-7 py-3 mt-4">
+        <button
+          className="bg-indigo-600 text-white capitalize font-medium px-7 py-3 mt-4"
+          onClick={addToCart}
+        >
           add to cart
         </button>
       </div>
