@@ -9,7 +9,7 @@ const Nav = ({ cart }) => {
         </Link>
         <Link to="/cart" className="relative">
           <BsHandbagFill size={22} />
-          <span className="flex items-center justify-center text-white absolute -top-3 -right-4 bg-indigo-600 w-7 h-7 rounded-full text-xs">
+          <span className="flex items-center justify-center font-medium text-white absolute -top-3 -right-4 bg-indigo-600 w-7 h-7 rounded-full text-xs">
             {cart.length}
           </span>
         </Link>
